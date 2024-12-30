@@ -18,7 +18,7 @@ world_size = pmi_world_size * gpus_per_machine
 cfg.mean = [0.5, 0.5, 0.5]
 cfg.std = [0.5, 0.5, 0.5]
 cfg.max_words = 1000
-cfg.num_workers = 8
+cfg.num_workers = 16
 cfg.prefetch_factor = 2
 
 # PlaceHolder
