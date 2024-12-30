@@ -6,12 +6,12 @@ num_workers: 2
 
 max_frames: 16
 sample_fps: 3
-resolution: [256,256]
+resolution: [64, 64]
 
 ## deoning batch size
-batch_size: 16
+batch_size: 1
 
-decoder_bs: 16
+decoder_bs: 4
 
 inference_seed: 42
 
