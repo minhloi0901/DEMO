@@ -32,7 +32,15 @@ def main(args):
     # if not, then split in this job.
     if not os.path.exists(partition_dir):
         os.makedirs(partition_dir)
-        full_df = pd.read_csv(args.csv_path)
+        try:
+            full_df = pd.read_csv('/content/DEMO/data/webvid/results_2M_train.csv')
+        except pd.errors.ParserError as e:
+            print(f"ParserError: {e}")
+            with open('/content/DEMO/data/webvid/results_2M_train.csv', 'r') as file:
+                lines = file.readlines()
+                for i, line in enumerate(lines[3795:3805]):  # Inspect lines around the problematic line
+                    print(f"Line {i + 3795}: {line}")
+
         df_split = np.array_split(full_df, args.partitions)
         for idx, subdf in enumerate(df_split):
             subdf.to_csv(os.path.join(partition_dir, f'{idx}.csv'), index=False)
